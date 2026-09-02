@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigiMandi — The Everything Bundle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101F2E;
+    --paper:#EDEAE0;
+    --paper-2:#E2DDCD;
+    --gold:#C9A227;
+    --teal:#0B3D3A;
+    --line:#c9c3ae;
+    --red-stamp:#9C3B2E;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:700; }
+  .wrap{ max-width:960px; margin:0 auto; padding:0 24px; }
+
+  /* HERO */
+  header.hero{
+    background:var(--ink);
+    color:var(--paper);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .brandmark{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:20px;
+    color:var(--gold); margin-bottom:48px;
+  }
+  .brandmark .dot{ width:8px; height:8px; border-radius:50%; background:var(--gold); }
+  .hero-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:center; }
+  @media(max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
+  h1.headline{
+    font-size:clamp(34px, 5vw, 54px);
+    line-height:1.08;
+    max-width:11ch;
+  }
+  .hero p.sub{
+    margin-top:20px; max-width:44ch; color:#cfd6d6; font-size:17px;
+  }
+  .price-card{
+    background:var(--paper); color:var(--ink);
+    border-radius:4px; padding:28px;
+    border-left:6px solid var(--red-stamp);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  }
+  .price-card .was{ text-decoration:line-through; color:#8a8578; font-size:15px; }
+  .price-card .now{ font-family:'Fraunces', serif; font-size:44px; font-weight:700; margin:4px 0 2px; }
+  .price-card .now sup{ font-size:20px; }
+  .price-card .note{ font-size:13px; color:#5b5747; margin-bottom:20px; }
+  .cta-btn{
+    display:block; text-align:center; text-decoration:none;
+    background:var(--red-stamp); color:#fff;
+    padding:15px 20px; border-radius:3px;
+    font-weight:600; font-size:16px;
+    letter-spacing:0.2px;
+  }
+  .cta-btn:hover{ background:#7f2f24; }
+  .price-card .fine{ margin-top:14px; font-size:12.5px; color:#5b5747; text-align:center; }
+
+  /* RECEIPT SECTION */
+  section.receipt{ padding:64px 0; }
+  .receipt-head{ margin-bottom:28px; }
+  .receipt-head p.kicker{ color:var(--teal); font-weight:600; font-size:14px; margin-bottom:8px; }
+  .receipt-head h2{ font-size:30px; max-width:20ch; }
+  .ticket{
+    background:#fff; border:1px solid var(--line);
+    border-radius:4px; overflow:hidden;
+  }
+  .ticket-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 24px; border-bottom:1px dashed var(--line);
+    gap:16px;
+  }
+  .ticket-row:last-child{ border-bottom:none; }
+  .ticket-row .num{ font-family:'Fraunces', serif; color:var(--gold); font-weight:700; width:28px; flex-shrink:0; }
+  .ticket-row .item{ flex:1; }
+  .ticket-row .item .title{ font-weight:600; font-size:15.5px; }
+  .ticket-row .item .desc{ font-size:13.5px; color:#5b5747; margin-top:2px; }
+  .ticket-total{
+    display:flex; justify-content:space-between; padding:20px 24px;
+    background:var(--ink); color:var(--paper);
+    font-family:'Fraunces', serif; font-size:18px; font-weight:700;
+  }
+
+  /* WHO ITS FOR */
+  section.audience{ padding:0 0 64px; }
+  .aud-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media(max-width:700px){ .aud-grid{ grid-template-columns:1fr; } }
+  .aud-card{ background:var(--paper-2); border-radius:4px; padding:22px; }
+  .aud-card .letter{
+    font-family:'Fraunces', serif; font-size:26px; color:var(--red-stamp); margin-bottom:10px;
+  }
+  .aud-card h3{ font-size:17px; margin-bottom:6px; }
+  .aud-card p{ font-size:14px; color:#4a473b; }
+
+  /* LICENSE STRIP */
+  section.license{ background:var(--teal); color:var(--paper); padding:44px 0; }
+  .lic-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  @media(max-width:700px){ .lic-grid{ grid-template-columns:1fr; } }
+  .lic-grid h4{ font-size:14px; letter-spacing:0.3px; margin-bottom:12px; color:var(--gold); font-weight:600; }
+  .lic-grid ul{ list-style:none; }
+  .lic-grid li{ font-size:14.5px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.12); }
+
+  /* FINAL CTA */
+  section.final{ padding:64px 0 80px; text-align:center; }
+  section.final h2{ font-size:32px; max-width:18ch; margin:0 auto 14px; }
+  section.final p{ color:#5b5747; max-width:42ch; margin:0 auto 28px; }
+  .final-cta{
+    display:inline-block; background:var(--red-stamp); color:#fff;
+    text-decoration:none; padding:16px 36px; border-radius:3px; font-weight:600; font-size:16px;
+  }
+  .stamp{
+    display:inline-block; margin-top:22px; font-size:12.5px; color:var(--teal); font-weight:600;
+    border:1.5px solid var(--teal); padding:6px 14px; border-radius:20px;
+  }
+
+  footer{ padding:28px 0 40px; text-align:center; font-size:12.5px; color:#8a8578; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandmark"><span class="dot"></span>DigiMandi</div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="headline">One bundle. Everything you'd otherwise buy in pieces.</h1>
+        <p class="sub">Design assets, dev tools, course libraries, Canva templates and AI prompt packs — bundled for creators and resellers who don't want to shop ten different stores.</p>
+      </div>
+      <div class="price-card">
+        <div class="was">₹4,999</div>
+        <div class="now">₹199<sup>/ one-time</sup></div>
+        <div class="note">Instant download after payment · UPI accepted</div>
+        <a href="https://superprofile.bio/vp/6a96662371d63e0013a21393" class="cta-btn">Get instant access</a>
+        <div class="fine">Resale rights included — see terms below</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="receipt">
+  <div class="wrap">
+    <div class="receipt-head">
+      <p class="kicker">What's inside</p>
+      <h2>Nine categories, one download link</h2>
+    </div>
+    <div class="ticket">
+      <div class="ticket-row">
+        <span class="num">01</span>
+        <div class="item"><div class="title">Graphic design &amp; video editing kit</div><div class="desc">Photoshop actions, Lightroom presets, sound effects, motion graphics assets</div></div>
+      </div>
+      <div class="ticket-row">
+        <span class="num">02</span>
+        <div class="item"><div class="title">Developer resources</div><div class="desc">WordPress themes &amp; plugins, landing page code, Shopify &amp; PrestaShop templates</div></div>
+      </div>
+      <div class="ticket-row">
+        <span class="num">03</span>
+        <div class="item"><div class="title">AI prompt packs</div><div class="desc">ChatGPT and Midjourney prompt libraries, plus a short prompting course</div></div>
+      </div>
+      <div class="ticket-row">
+        <span class="num">04</span>
+        <div class="item"><div class="title">Canva template sets</div><div class="desc">Planners, social media kits, faceless reels templates, digital stickers</div></div>
+      </div>
+      <div class="ticket-row">
+        <span class="num">05</span>
+        <div class="item"><div class="title">Courses &amp; e-books</div><div class="desc">Reseller training, entrepreneurship courses, PLR articles and e-book libraries</div></div>
+      </div>
+    </div>
+    <div class="ticket-total"><span>Total value if bought separately</span><span>₹4,999+</span></div>
+  </div>
+</section>
+
+<section class="audience">
+  <div class="wrap">
+    <div class="aud-grid">
+      <div class="aud-card">
+        <div class="letter">A</div>
+        <h3>Freelancers &amp; creators</h3>
+        <p>Skip paying separately for presets, templates and stock assets on every project.</p>
+      </div>
+      <div class="aud-card">
+        <div class="letter">B</div>
+        <h3>Resellers</h3>
+        <p>Comes with resale rights, so you can list it on your own store or Instagram shop.</p>
+      </div>
+      <div class="aud-card">
+        <div class="letter">C</div>
+        <h3>Students &amp; side-hustlers</h3>
+        <p>A low-cost way to try digital reselling without building products from scratch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="license">
+  <div class="wrap lic-grid">
+    <div>
+      <h4>WHAT YOU CAN DO</h4>
+      <ul>
+        <li>Use every file for personal or client work</li>
+        <li>Resell the full bundle or individual items</li>
+        <li>Edit PLR items and sell them as your own</li>
+        <li>Offer files under your own shop or brand name</li>
+      </ul>
+    </div>
+    <div>
+      <h4>WHAT YOU CAN'T DO</h4>
+      <ul>
+        <li>Resell below the listed store price</li>
+        <li>Reuse our listing photos, titles or descriptions</li>
+        <li>Share the download link publicly for free</li>
+        <li>Use our brand name in your own promotions</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Get the full bundle today</h2>
+    <p>One payment, instant download, resale rights included.</p>
+    <a href="https://superprofile.bio/vp/6a96662371d63e0013a21393" class="final-cta">Buy now — ₹199</a>
+    <div><span class="stamp">UPI · Cards · Netbanking accepted</span></div>
+  </div>
+</section>
+
+<footer>DigiMandi · Digital products bundle · Support: your-email@example.com</footer>
+
+</body>
+</html>
